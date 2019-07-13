@@ -56,7 +56,7 @@ server.post("/login", (req, res) => {
     .catch(err =>
       res.status(500).json({
         err,
-        message: "There has been an error on the Login POST endpoint"
+        message: "There has been an error on the Login"
       })
     );
 });

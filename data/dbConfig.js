@@ -1,6 +1,6 @@
-const knex = require('knex')
-const config = require('../knexfile.js')
+const knex = require("knex");
+const config = require("../knexfile.js");
 
-const useEnvironment = process.env.DB_ENV || 'development'
+const useEnvironment = process.env.DB_ENV || "development";
 
-module.exports = knex(config[useEnvironment])
+module.exports = knex(config[useEnvironment]);
