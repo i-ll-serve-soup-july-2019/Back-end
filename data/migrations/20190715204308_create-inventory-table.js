@@ -9,7 +9,7 @@ exports.up = function(knex) {
     tbl.string('item', 32).notNullable()
     tbl.integer('quantity').defaultTo(0)
     tbl.string('units', 32).notNullable()
-    tbl.integer('threshold')
+    tbl.integer('threshold').defaultTo(1)
   })
 };
 
