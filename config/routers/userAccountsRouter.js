@@ -10,8 +10,8 @@ const generateToken = middleware.generateToken;
 server.post("/register", (req, res) => {
   const newUser = req.body;
 
-  userInfo.password = bcrypt.hashSync(userInfo.password, 14);
-  if (userInfo.id) {
+  newUser.password = bcrypt.hashSync(newUser.password, 14);
+  if (newUser.id) {
     res.status(400).json({
       error:
         "Please do not include the ID number in the registration. The system auto-generates them"
@@ -21,7 +21,7 @@ server.post("/register", (req, res) => {
       .insert(newUser)
       .then(ids => {
         res.status(201).json({
-          message: `User ${userInfo.username} has been successfully registered`,
+          message: `User ${newUser.username} has been successfully registered`,
           userID: ids[0]
         });
       })
@@ -35,13 +35,13 @@ server.post("/register", (req, res) => {
 });
 
 server.post("/login", (req, res) => {
-  const userInfo = req.body;
+  const newUser = req.body;
 
   db("users")
-    .where({ username: userInfo.username })
+    .where({ username: newUser.username })
     .first()
     .then(user => {
-      if (user && bcrypt.compareSync(userInfo.password, user.password)) {
+      if (user && bcrypt.compareSync(newUser.password, user.password)) {
         const token = generateToken(user);
         res.status(200).json({
           message: user.username,
@@ -60,3 +60,5 @@ server.post("/login", (req, res) => {
       })
     );
 });
+
+module.exports = server;
