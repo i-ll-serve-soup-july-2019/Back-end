@@ -3,7 +3,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 
 // const inventoryRouter = require("../config/routers/inventoryRouter.js");
-// const usersRouter = require("../config/routers/usersRouter.js");
 const userAccountsRouter = require("../config/routers/userAccountsRouter.js");
 
 const server = express();
@@ -26,7 +25,6 @@ server.get("/", (req, res) => {
 });
 
 // server.use("/api/inventory", inventoryRouter);
-// server.use("/api/users", usersRouter);
 server.use("/api/useraccounts", userAccountsRouter);
 
 module.exports = server;
