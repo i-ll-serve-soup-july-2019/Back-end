@@ -8,16 +8,16 @@ module.exports = {
     findById
 }
 
-async function getInventory(){
-    return null
+async function getInventory(userId){
+    return db('inventory').where({ userId })
 }
 
 async function findBy(filter){
-    return null
+    return db('inventory')
 }
 
-async function findById(id){
-    return null
+async function findById(userId){
+    return db('inventory').where({ userId })
 }
 
 async function addItem(item){
