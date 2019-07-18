@@ -51,10 +51,26 @@ router
 
 router
   .use(authenticate)
-  .route("/:id")
+  .route("/:username")
   .get((req, res) => {
     db("inventory")
-      .where({ userId: req.params.id })
+      .where({ username: req.params.username })
+      .then(item => {
+        res.status(200).json(item);
+      })
+      .catch(err => {
+        res.status(500).json({
+          error: "There has been a server error for this GET route",
+          err
+        });
+      });
+  });
+router
+  .use(authenticate)
+  .route("/:username/:id")
+  .get((req, res) => {
+    db("inventory")
+      .where({ username: req.params.username, id: req.params.id })
       .then(item => {
         res.status(200).json(item);
       })
@@ -67,7 +83,7 @@ router
   })
   .put((req, res) => {
     db("inventory")
-      .where({ userId: req.params.id })
+      .where({ id: req.params.id })
       .update(req.body)
       .then(count => {
         if (count > 0) {
@@ -89,7 +105,7 @@ router
   })
   .delete((req, res) => {
     db("inventory")
-      .where({ userId: req.params.id })
+      .where({ id: req.params.id })
       .del()
       .then(count => {
         if (count > 0) {
