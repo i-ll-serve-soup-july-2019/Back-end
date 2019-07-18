@@ -18,7 +18,6 @@ async function findBy(filter) {
   return db("inventory");
 }
 
-}
 
 async function updateItem(item) {
   return null;
