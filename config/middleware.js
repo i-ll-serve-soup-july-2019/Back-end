@@ -65,14 +65,14 @@ const middleware = {
   },
   lowInventoryCheck: (req, res) => {
     db("inventory")
-      .where("quantity", "<", "lowInventoryThreshold")
+      .where("quantity", "<", "threshold")
       .then(inventory => {
         res.status(201).json(inventory);
       })
       .catch(err =>
         res.status(500).json({
           err,
-          message: "There has been an error on the Register function"
+          message: "There has been an error on the low inventory function"
         })
       );
   }
