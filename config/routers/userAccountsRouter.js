@@ -45,7 +45,9 @@ server.post("/login", (req, res) => {
         const token = generateToken(user);
         res.status(200).json({
           message: user.username,
-          token: token
+          token: token,
+          userId: newUser.userId,
+          username: newUser.username
         });
       } else {
         res.status(401).json({
