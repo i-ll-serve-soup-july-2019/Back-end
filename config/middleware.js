@@ -8,7 +8,6 @@ const knexConfig = require("../knexfile.js");
 const db = knex(knexConfig.development);
 
 const middleware = {
-  // I know this is object technically contains middleware AND helper functions, not just middleware
   register: (req, res) => {
     const userInfo = req.body;
 
@@ -28,7 +27,6 @@ const middleware = {
   },
 
   generateToken: user => {
-    // console.log("in generateToken", user);
     const payload = {
       username: user.username,
       role: user.role
@@ -56,12 +54,12 @@ const middleware = {
       });
     } else {
       console.error(
-        "401 - Not Authorized - Perhaps you forgot to include the token on the Authorization header? Just a guess..."
+        "401 Error. You are nnot authorized. Perhaps you forgot to include the token on the Authorization header? Try Again Grasshopper."
       );
       return res.status(401).json({
         message: "401 - Not Authorized",
         error:
-          "401 - Not Authorized - Perhaps you forgot to include the token on the Authorization header? Just a guess..."
+          "401 - Not Authorized - Perhaps you forgot to include the token on the Authorization header? Try Again Grasshopper"
       });
     }
   },
