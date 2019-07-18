@@ -55,9 +55,49 @@ describe('inventory model functions', () => {
 
     })
 
-    //describe('add item to inventory', () => {
+    describe('add item to inventory', () => {
+        afterEach( async () => {
+            await db ('inventory').truncate()
+        })
+        it('should add an item to inv w/ a foreign key identifier', async () => {
+            const newItem4 ={
+                userId:1,
+                username:"gettest",
+                item:"pickle",
+                quantity: 4,
+                units:"pieces",
+                threshold: 2
+            }
 
-    //})
+            const newItem5 ={
+                userId:1,
+                username:"gettest",
+                item:"banana",
+                quantity: 12,
+                units:"pieces",
+                threshold: 2
+            }
+
+            const newItem6 ={
+                userId:2,
+                username:"gettest2",
+                item:"watermelon",
+                quantity: 10,
+                units:"pieces",
+                threshold: 1
+            }
+            const addedItem4 = Inv.addItem(newItem4)
+            const addedItem5 = Inv.addItem(newItem5)
+            const addedItem6 = Inv.addItem(newItem6)
+    
+            const inventoryList = await db('inventory')
+    
+            expect(inventoryList).toHaveLength(3)
+            expect(inventoryList[0].item).toBe(newItem4.item)
+            expect(inventoryList[1].quantity).toBe(newItem5.quantity)
+            expect(inventoryList[2].units).toBe(newItem6.units)
+        })
+    })
 
     // describe('update inventory item', () => {
 

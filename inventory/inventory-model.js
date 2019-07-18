@@ -16,12 +16,13 @@ async function findBy(filter){
     return db('inventory')
 }
 
-async function findById(userId){
-    return db('inventory').where({ userId })
+async function findById(id){
+    return db('inventory').where({ id }).first()
 }
 
 async function addItem(item){
-    return null
+    const [id] = await db('inventory').insert(item)
+    return findById(id)
 }
 
 async function updateItem(item){
