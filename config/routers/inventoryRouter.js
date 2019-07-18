@@ -5,7 +5,7 @@ const knexConfig = require("../../knexfile.js");
 const db = knex(knexConfig.development);
 const middleware = require("../middleware.js");
 const authenticate = middleware.authenticate;
-const lowInvetoryCheck = middleware.lowInventoryCheck;
+const lowInventoryCheck = middleware.lowInventoryCheck;
 
 router
   .use(authenticate)
