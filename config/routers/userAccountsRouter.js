@@ -44,8 +44,8 @@ server.post("/login", (req, res) => {
       if (user && bcrypt.compareSync(newUser.password, user.password)) {
         const token = generateToken(user);
         res.status(200).json({
-          message: `Welcome, ${user.username}!`,
-          token: token
+         message: `Welcome, ${user.username}!`,
+         token: token
         });
       } else {
         res.status(401).json({
