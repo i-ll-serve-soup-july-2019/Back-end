@@ -44,10 +44,8 @@ server.post("/login", (req, res) => {
       if (user && bcrypt.compareSync(newUser.password, user.password)) {
         const token = generateToken(user);
         res.status(200).json({
-          message: user.username,
-          token: token,
-          userId: newUser.userId,
-          username: newUser.username
+         message: `Welcome, ${user.username}!`,
+         token: token
         });
       } else {
         res.status(401).json({
@@ -58,7 +56,7 @@ server.post("/login", (req, res) => {
     .catch(err =>
       res.status(500).json({
         err,
-        message: "There has been an error on the Login"
+        message: "There has been an error on the Login endpoint."
       })
     );
 });
