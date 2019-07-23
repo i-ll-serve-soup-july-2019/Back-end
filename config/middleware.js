@@ -63,7 +63,7 @@ const middleware = {
       });
     }
   },
-  lowInventoryCheck: (req, res) => {
+  lowInventoryCheck: (req, res, id) => {
     db("inventory")
       .where("quantity", "<", "threshold")
       .then(inventory => {
