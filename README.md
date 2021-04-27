@@ -1,4 +1,5 @@
-# Back-end
+# Back-end 
+Backend repo for the ill serve soup inventory management system
 
 Routes
 
