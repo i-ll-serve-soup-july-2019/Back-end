@@ -1,5 +1,7 @@
 # Back-end 
-Backend repo for the ill serve soup inventory management system
+This is the repository for the Front End React App for I'll Serve Soup, a soup kitchen inventory management software.
+
+
 
 Routes
 
