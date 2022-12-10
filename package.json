@@ -20,7 +20,7 @@
 "license": "MIT",
 "dependencies": {
   "dotenv": "^8.0.0",
-  "express": "^4.17.1",
+  "express": "^4.17.3",
   "knex": "^0.17.6",
   "sqlite3": "^4.0.9",
   "helmet": "^3.18.0",
